@@ -1,14 +1,15 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const router = require('./routes/routes')
+require('dotenv').config()
+
 
 const app = express()
 app.use(express.json())
 
 const port = 8080;
-const DB ='mongodb+srv://ravi6680singh:rm1ah4tPSRyenb0X@cluster0.viocq1u.mongodb.net/'
 
-mongoose.connect(DB)
+mongoose.connect(process.env.MongoDBURL)
     .then(() => console.log('MongoDB is connected'))
     .catch((e) => console.log(e))
 
